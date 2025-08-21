@@ -22,6 +22,7 @@ community Recipes:
 - [Tempest Weather Station](/lib/tempest_weather_station)
 - [Todoist](/lib/todoist)
 - [upcoming movies](/lib/upcoming_movies)
+- [ticktick](/lib/ticktick)
 - [Weather (generic)](/lib/weather)
 
 native plugin structure:
