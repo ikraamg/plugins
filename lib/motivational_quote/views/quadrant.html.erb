@@ -1,0 +1,15 @@
+<div class="view view--quadrant">
+  <div class="layout">
+    <div class="richtext richtext--center text--center gap">
+      <span class="value value--xxxlarge" data-value-fit="true" data-value-fit-max-height="160">
+        <%= quote[:content] %>
+      </span>
+      <span class="label label--underline" data-pixel-perfect="true"><%= quote[:author] %></span>
+    </div>
+  </div>
+
+  <div class="title_bar">
+    <img class="image" src="<%= Rails.application.credentials.base_url %>/images/plugins/motivational_quote--render.svg" />
+    <span class="title">Quote of the day!</span>
+  </div>
+</div>
