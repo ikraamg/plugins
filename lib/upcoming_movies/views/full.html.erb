@@ -1,0 +1,23 @@
+<div class="view view--full">
+  <div class="layout">
+    <div class="columns">
+      <div class="column">
+        <div class="richtext richtext--center text--center gap--xsmall">
+          <span class="title" data-pixel-perfect="true"><%= movie[:title] %></span>
+          <div class="content" data-content-limiter="true" data-pixel-perfect="true"><%= image_tag movie[:poster_url], style: 'height: 350px', class: 'image-dither' %></div>
+          <span class="label label--small" data-pixel-perfect="true">Release Date: <%= movie[:release_date] %></span>
+        </div>
+      </div>
+      <div class="column">
+        <div class="richtext richtext--center gap--large">
+          <!-- TODO: added empty divs to create spacing, fix! -->
+          <div class=""></div>
+          <div class=""></div>
+          <div class="content" data-content-limiter="true"><%= movie[:overview] %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= render 'plugins/upcoming_movies/shared/title_bar', filter_by_label: filter_by_label %>
+</div>

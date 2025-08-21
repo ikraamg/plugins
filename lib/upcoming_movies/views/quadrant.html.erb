@@ -1,0 +1,20 @@
+<div class="view view--quadrant">
+  <div class="layout layout--col gap--xsmall">
+    <div class="columns">
+      <div class="column">
+        <div class="richtext richtext--center gap--xsmall">
+          <span class="title"><%= movie[:title] %></span>
+          <div class="content" data-content-limiter="true"><%= image_tag movie[:poster_url], style: 'height: 100px', class: 'image-dither' %></div>
+          <span class="label label--small">Release Date: <%= movie[:release_date] %></span>
+        </div>
+      </div>
+      <div class="column">
+        <div class="richtext richtext--center gap--xsmall">
+          <div class="content--small" data-content-limiter="true"><%= movie[:overview]&.truncate(285) %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= render 'plugins/upcoming_movies/shared/title_bar', filter_by_label: filter_by_label %>
+</div>
