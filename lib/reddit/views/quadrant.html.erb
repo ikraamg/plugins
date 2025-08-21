@@ -1,0 +1,28 @@
+<div class="view view--quadrant">
+  <div class="layout layout--col gap--xxlarge">
+    <% subreddit_and_posts = featured_posts.first %>
+    <div class="list" data-list-limit="true" data-list-max-height="170" data-list-hidden-count="false">
+      <div class="item">
+        <span class="label"># <%= subreddit_and_posts[:subreddit] %></span>
+      </div>
+      <% subreddit_and_posts[:posts].each_with_index do |post, idx| %>
+        <div class="item">
+          <div class="meta">
+            <span class="index"><%= idx + 1 %></span>
+          </div>
+          <div class="content">
+            <span class="title title--small <% unless truncate_title %> text--truncate-none <% end %>"><%= sanitize(post[:title]) %></span>
+            <% if include_metadata %>
+              <div class="flex gap--xsmall">
+                <span class="label label--small label--underline"><%= number_with_delimiter(post[:votes]) %> votes</span>
+                <span class="label label--small label--underline">via u/<%= post[:author] %></span>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= render "plugins/reddit/title_bar", sort_by: sort_by %>
+</div>
