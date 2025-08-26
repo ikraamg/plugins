@@ -118,10 +118,18 @@ module Plugins
 
     def project_name
       # don't store this permanently in case user changes name
-      # return settings['project_name'] if settings['project_name'].present?
+      project = projects.find { |p| p.values.to_s.include? settings['todoist_project_id'].to_s }.keys.first
+      project = project.dup if project.frozen? # cannot gsub! a frozen string and cannot unfreeze
 
-      projects = Plugins::Todoist.projects(access_token)
-      projects.find { |p| p.values.to_s.include? settings['todoist_project_id'].to_s }.keys.first
+      # special chars: https://www.todoist.com/help/articles/introduction-to-filters-V98wIH#h_01HBBMVW64QWWNYWFRQC37B3WY
+      special_chars = %w[( )]
+      special_chars.each { |char| project.gsub!(char, "\\#{char}") }
+
+      project
+    end
+
+    def projects
+      @projects ||= Plugins::Todoist.projects(access_token)
     end
 
     def project_id
@@ -211,11 +219,16 @@ module Plugins
     end
 
     def sort_by_date(tasks)
-      date_infinity = tasks.map { it.dig('due', 'date') && Date.parse(it['due']['date']) }.compact.max + 1
+      date_infinity = latest_due_task(tasks) + 1
 
       tasks.sort_by do |task|
         task.dig('due', 'date') ? Date.parse(task.dig('due', 'date')) : date_infinity
       end
+    end
+
+    # sorting tasks by due date fails without a date to compare
+    def latest_due_task(tasks)
+      tasks.map { it.dig('due', 'date') && Date.parse(it['due']['date']) }.compact.max || Date.today
     end
 
     def sort_by_date_added(tasks)

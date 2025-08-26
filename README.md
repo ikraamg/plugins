@@ -23,6 +23,7 @@ community Recipes:
 - [Tempest Weather Station](/lib/tempest_weather_station)
 - [ticktick](/lib/ticktick)
 - [TickTick](/lib/ticktick)
+- [todoist](/lib/todoist)
 - [Todoist](/lib/todoist)
 - [Weather (generic)](/lib/weather)
 
