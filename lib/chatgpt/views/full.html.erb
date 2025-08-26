@@ -1,0 +1,16 @@
+<div class="view view--full">
+  <div class="layout">
+    <div class="columns">
+      <div class="column">
+        <div class="richtext richtext--center gap--large">
+          <div class="content content--center" data-content-max-height="400" data-content-limiter="true" data-pixel-perfect="true"><%= simple_format(answer) %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="title_bar">
+    <img class="image" src="<%= Rails.application.credentials.base_url %>/images/plugins/chatgpt--render.svg" />
+    <span class="title">ChatGPT</span>
+  </div>
+</div>
