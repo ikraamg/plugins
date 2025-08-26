@@ -1,0 +1,25 @@
+<div class="view view--half_vertical">
+  <div class="layout layout--col gap--xxlarge">
+    <div class="columns">
+      <div class="column" data-list-limit="true" data-list-max-height="450" data-list-hidden-count="false">
+        <% tasks.each_with_index do |task, idx| %>
+          <div class="item">
+            <div class="meta">
+              <span class="index"><%= idx + 1 %></span>
+            </div>
+            <div class="content">
+              <span class="title title--small"><%= simple_format(render_markdown(task[:content])) %></span>
+              <% if task[:due].present? %>
+                <div class="flex gap--xsmall">
+                  <span class="label label--small label--underline">due <%= I18n.l Date.parse(task[:due]), format: :short %></span>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <%= render partial: "plugins/todolist/shared/title_bar", locals: local_assigns %>
+</div>
