@@ -25,7 +25,7 @@
       </div>
 
       <div class="col--span-4 col h-full gap--space-between">
-        <% formatted_data = metrics.map { |period| [l(Time.at(period.keys.first).to_date, format: :short, locale:), period.values.first] } %>
+        <% formatted_data = metrics.map { |period| [l(Time.at(period.keys.first.to_s.to_i).to_date, format: :short, locale:), period.values.first] } %>
         <%= line_chart formatted_data, adapter: :highcharts, prefix: "", thousands: ",", points: false, colors: ["black"], curve: true,
           library: {
             chart: { height: 176, width: 612 },
