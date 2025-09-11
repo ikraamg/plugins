@@ -1,10 +1,10 @@
 <div class="view view--full">
-  <div class="layout layout--col layout--top">
+  <div class="layout layout--col layout--top gap--space-between">
     <%= render 'plugins/parcel/shared/header', deliveries:, filter_mode:, value_size: 'large' %>
 
-    <div class="border--h-3 w-full my--2"></div>
+    <div class="divider"></div>
 
-    <%= render 'plugins/parcel/shared/deliveries', max_height: 270, max_columns: 3, deliveries:, error:, style: %>
+    <%= render 'plugins/parcel/shared/deliveries', max_columns: 3, deliveries:, error:, style: %>
   </div>
 
   <%= render "plugins/parcel/shared/title_bar", instance_name: instance_name %>
