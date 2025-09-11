@@ -13,14 +13,12 @@
                     <%= t("renders.parcel.status.#{delivery[:status_key]}", locale:) %>
                 </span>
             </div>
-            <div class="description">
-                <% if delivery[:delivery_by] %>
-                    <div class="label label--small clamp--2">
-                        <%= t('renders.parcel.delivery_by', locale:) %>:
-                        <%= delivery[:delivery_by] %>
-                    </div>
-                <% end %>
-            </div>
+            <% if delivery[:delivery_by] %>
+                <div class="label label--small" data-clamp="2">
+                    <%= t('renders.parcel.delivery_by', locale:) %>:
+                    <%= delivery[:delivery_by] %>
+                </div>
+            <% end %>
         <% else %>
             <span class="title title--small">
                 <%= delivery[:title] %>
@@ -28,17 +26,15 @@
             <span class="label label--small label--inverted">
                 <%= t("renders.parcel.status.#{delivery[:status_key]}", locale:) %>
             </span>
-            <div class="description">
-                <div class="label label--small clamp--2">
-                    <%= delivery[:latest] %>
-                </div>
-                <% if delivery[:delivery_by] %>
-                    <div class="label label--small clamp--2">
-                        <%= t('renders.parcel.delivery_by', locale:) %>:
-                        <%= delivery[:delivery_by] %>
-                    </div>
-                <% end %>
+            <div class="description" data-clamp="2">
+                <%= delivery[:latest] %>
             </div>
+            <% if delivery[:delivery_by] %>
+                <div class="label label--small" data-clamp="2">
+                    <%= t('renders.parcel.delivery_by', locale:) %>:
+                    <%= delivery[:delivery_by] %>
+                </div>
+            <% end %>
         <% end %>
     </div>
 </div>
